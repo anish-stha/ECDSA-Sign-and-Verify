@@ -17,12 +17,12 @@ public class Signature {
         BigInteger[] G = ellipticCurve.getXyG();
         KeyPair kp = new KeyPair(G, n, a);
 
+
         Scanner s = new Scanner(System.in);
         System.out.println("Enter your message on one line:");
         String msg = s.nextLine();
 
         BigInteger[] signature = ECDSAEngine.messageSign(msg, n, G, a, kp.getPrivateKey());
-
         ECDSAEngine.messageVerify(msg, signature, n, G, a, kp.getPublicKey());
     }
 
